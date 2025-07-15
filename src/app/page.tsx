@@ -461,7 +461,7 @@ export default function Home() {
                       <BookOpen className="w-6 h-6 text-green-400 group-hover:animate-bounce" />
                       <h3 className="text-2xl font-bold text-white group-hover:text-green-300 transition-colors duration-300">اردو خلاصہ</h3>
                     </div>
-                    <p className="text-gray-100 leading-relaxed text-lg font-light text-right group-hover:text-white transition-colors duration-300" dir="rtl">
+                    <p className="text-gray-100 leading-relaxed text-lg font-light text-right group-hover:text-white transition-colors duration-300 break-words whitespace-pre-line overflow-x-hidden" dir="rtl">
                       {urduSummary}
                     </p>
                   </div>
