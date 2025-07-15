@@ -163,7 +163,7 @@ export default function Home() {
 
     const typeEffect = setInterval(() => {
       const currentPhrase = phrases[phraseIndex];
-      
+
       if (isDeleting) {
         setAnimatedText(currentPhrase.substring(0, charIndex - 1));
         charIndex--;
@@ -176,7 +176,7 @@ export default function Home() {
         charIndex++;
         if (charIndex === currentPhrase.length) {
           isDeleting = true;
-          setTimeout(() => {}, 1000);
+          setTimeout(() => { }, 1000);
         }
       }
     }, isDeleting ? 50 : 100);
@@ -188,22 +188,25 @@ export default function Home() {
     if (!url.trim()) return;
     setIsLoading(true);
     setShowSuccess(false);
-    
+
+
     try {
       await new Promise(resolve => setTimeout(resolve, 3000));
-      
+
       const content = simulateScrape(url);
       setFullBlog(content);
-      
+
       const englishSummary = simulateSummary(content);
       setSummary(englishSummary);
-      
+
       const urduTranslation = translateToUrdu(englishSummary);
       setUrduSummary(urduTranslation);
-      
+
       setShowSuccess(true);
       setTimeout(() => setShowSuccess(false), 3000);
-      
+
+  
+
     } catch (error) {
       console.error('Error:', error);
     } finally {
@@ -221,6 +224,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 relative overflow-hidden">
+      
       {/* Animated Background */}
       <div className="absolute inset-0 opacity-20">
         <div className="absolute top-0 left-0 w-72 h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl animate-pulse"></div>
@@ -284,47 +288,48 @@ export default function Home() {
         {/* Main Content */}
         <div className="max-w-6xl mx-auto">
           {/* Input Section */}
-          <div className="bg-white/10 backdrop-blur-xl rounded-3xl shadow-2xl p-8 mb-8 border border-white/20 hover:bg-white/15 transition-all duration-300">
-            <div className="flex items-center gap-3 mb-8">
-              <div className="p-3 bg-gradient-to-r from-blue-500 to-purple-500 rounded-xl">
-                <Link2 className="w-6 h-6 text-white" />
-              </div>
-              <h2 className="text-3xl font-bold text-white">Enter Blog URL</h2>
-              <div className="flex-1 h-px bg-gradient-to-r from-purple-500 to-transparent"></div>
-            </div>
-            
-            <div className="flex gap-4 mb-8">
-              <div className="flex-1 relative">
-                <Input
-                  type="url"
-                  value={url}
-                  onChange={(e) => setUrl(e.target.value)}
-                  placeholder="https://example.com/amazing-blog-post"
-                  className="h-14 text-lg bg-white/20 backdrop-blur-sm border-2 border-white/30 focus:border-purple-500 rounded-2xl text-white placeholder-gray-300 shadow-lg"
-                />
-                <button 
-                  onClick={() => url && window.open(url, '_blank')}
-                  disabled={!url.trim()}
-                  className="absolute right-3 top-1/2 transform -translate-y-1/2 p-2 hover:bg-white/20 rounded-lg transition-all duration-300 hover:scale-110 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
-                  title="Open URL in new tab"
-                >
-                  <Globe className="w-5 h-5 text-gray-400 hover:text-blue-400 transition-colors duration-300" />
-                </button>
-              </div>
-              <Button
-                onClick={handleSummarize}
-                disabled={!url.trim() || isLoading}
-                className="h-14 px-8 bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 hover:from-purple-700 hover:via-pink-700 hover:to-blue-700 text-white font-bold rounded-2xl shadow-2xl transition-all duration-300 transform hover:scale-105 hover:shadow-purple-500/50"
-              >
-                {isLoading ? (
-                  <>
-                    <div className="flex items-center gap-2">
-                      <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
-                      <span>Analyzing Magic...</span>
-                    </div>
-                  </>
-                ) : (
-                  <>
+<div className="bg-white/10 backdrop-blur-xl rounded-3xl shadow-2xl p-8 mb-8 border border-white/20 hover:bg-white/15 transition-all duration-300">
+  <div className="flex items-center gap-3 mb-8">
+    <div className="p-3 bg-gradient-to-r from-blue-500 to-purple-500 rounded-xl">
+      <Link2 className="w-6 h-6 text-white" />
+    </div>
+    <h2 className="text-3xl font-bold text-white">Enter Blog URL</h2>
+    <div className="flex-1 h-px bg-gradient-to-r from-purple-500 to-transparent"></div>
+  </div>
+
+  {/* ✅ This wrapper is now responsive */}
+  <div className="flex flex-wrap gap-4 mb-8">
+    <div className="flex-1 relative">
+      <Input
+        type="url"
+        value={url}
+        onChange={(e) => setUrl(e.target.value)}
+        placeholder="https://example.com/amazing-blog-post"
+        className="w-full sm:w-auto h-14 text-lg bg-white/20 backdrop-blur-sm border-2 border-white/30 focus:border-purple-500 rounded-2xl text-white placeholder-gray-300 shadow-lg"
+      />
+      <button
+        onClick={() => url && window.open(url, '_blank')}
+        disabled={!url.trim()}
+        className="absolute right-3 top-1/2 transform -translate-y-1/2 p-2 hover:bg-white/20 rounded-lg transition-all duration-300 hover:scale-110 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
+        title="Open URL in new tab"
+      >
+        <Globe className="w-5 h-5 text-gray-400 hover:text-blue-400 transition-colors duration-300" />
+      </button>
+    </div>
+
+    {/* ✅ Summarize button is now responsive */}
+    <Button
+      onClick={handleSummarize}
+      disabled={!url.trim() || isLoading}
+      className="w-full sm:w-auto h-14 px-8 bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 hover:from-purple-700 hover:via-pink-700 hover:to-blue-700 text-white font-bold rounded-2xl shadow-2xl transition-all duration-300 transform hover:scale-105 hover:shadow-purple-500/50"
+    >
+      {isLoading ? (
+        <div className="flex items-center gap-2">
+          <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
+          <span>Analyzing Magic...</span>
+        </div>
+      ) : (
+        <>
                     <Play className="w-5 h-5 mr-2" />
                     Summarize Now
                   </>
@@ -392,11 +397,10 @@ export default function Home() {
               <div className="flex gap-3 mb-8">
                 <button
                   onClick={() => setActiveTab('english')}
-                  className={`relative flex items-center gap-3 px-8 py-4 rounded-2xl font-bold transition-all duration-300 ${
-                    activeTab === 'english'
-                      ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-2xl transform scale-105'
-                      : 'bg-white/10 text-gray-300 hover:bg-white/20 hover:text-white'
-                  }`}
+                  className={`relative flex items-center gap-3 px-8 py-4 rounded-2xl font-bold transition-all duration-300 ${activeTab === 'english'
+                    ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-2xl transform scale-105'
+                    : 'bg-white/10 text-gray-300 hover:bg-white/20 hover:text-white'
+                    }`}
                 >
                   <Globe className="w-5 h-5" />
                   English Summary
@@ -406,11 +410,10 @@ export default function Home() {
                 </button>
                 <button
                   onClick={() => setActiveTab('urdu')}
-                  className={`relative flex items-center gap-3 px-8 py-4 rounded-2xl font-bold transition-all duration-300 ${
-                    activeTab === 'urdu'
-                      ? 'bg-gradient-to-r from-green-600 to-teal-600 text-white shadow-2xl transform scale-105'
-                      : 'bg-white/10 text-gray-300 hover:bg-white/20 hover:text-white'
-                  }`}
+                  className={`relative flex items-center gap-3 px-8 py-4 rounded-2xl font-bold transition-all duration-300 ${activeTab === 'urdu'
+                    ? 'bg-gradient-to-r from-green-600 to-teal-600 text-white shadow-2xl transform scale-105'
+                    : 'bg-white/10 text-gray-300 hover:bg-white/20 hover:text-white'
+                    }`}
                 >
                   <BookOpen className="w-5 h-5" />
                   اردو خلاصہ
@@ -469,7 +472,7 @@ export default function Home() {
                   <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all duration-500 hover:scale-[1.01] hover:shadow-2xl group">
                     <div className="flex items-center justify-between mb-6">
                       <div className="flex items-center gap-3">
-                        <button 
+                        <button
                           onClick={() => window.open(url, '_blank')}
                           className="p-2 hover:bg-white/20 rounded-lg transition-all duration-300 hover:scale-110 active:scale-95"
                           title="Open original content"
@@ -517,7 +520,7 @@ export default function Home() {
         </div>
       </div>
 
-     <style jsx>{`
+      <style jsx>{`
         @keyframes slideInUp {
           from {
             opacity: 0;
@@ -537,6 +540,7 @@ export default function Home() {
             opacity: 1;
           }
         }
+
         
         .animate-slideInUp {
           animation: slideInUp 0.6s ease-out;
