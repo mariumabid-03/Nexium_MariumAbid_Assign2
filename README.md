@@ -48,5 +48,5 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=your-supabase-anon-key
 
 🔗 Live Demo (Vercel)
 
-Click here to view the deployed site 🚀
+https://nexium-marium-abid-assign2-y7iv.vercel.app/ 🚀
 
