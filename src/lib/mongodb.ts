@@ -1,14 +1,17 @@
 import { MongoClient } from "mongodb";
 
-const uri = process.env.MONGODB_URI!;
+const uri = process.env.MONGODB_URI;
+
+if (!uri) {
+  throw new Error('Please define the MONGODB_URI environment variable');
+}
+
 const options = {};
 
-// ⛑️ Extend the global object to include our custom client promise
 declare global {
   var _mongoClientPromise: Promise<MongoClient> | undefined;
 }
 
-// ✅ Ensure clientPromise is declared after setting it properly
 let client: MongoClient;
 let clientPromise: Promise<MongoClient>;
 
