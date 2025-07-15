@@ -1,36 +1,52 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 📰 BlogLens – Nexium Assignment 2
 
-## Getting Started
+A powerful and beginner-friendly *blog summariser* web app built using *Next.js 15, **ShadCN UI, and **TypeScript. This project was created as part of **Assignment 2* for the Nexium Internship program.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 🚀 Features
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- 🧠 Choose from predefined blog samples to simulate content scraping
+- ✨ AI-like summary generation (predefined using static logic)
+- 🌐 Urdu translation of English summaries
+- 💾 Stores full blog content to *MongoDB*
+- 📤 Saves summaries to *Supabase* (key-value format)
+- 📱 Fully responsive UI with smooth transitions and animations
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🛠️ Tech Stack
 
-## Learn More
+- *Framework:* Next.js 15 (App Router)
+- *Styling:* Tailwind CSS, ShadCN UI
+- *Icons:* Lucide Icons
+- *Languages:* TypeScript
+- *Backend Services:*
+  - *Supabase* – storing summaries
+  - *MongoDB Atlas* – storing full blog content
+- *Deployment:* Vercel
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📂 Folder Structure
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+nexium-assign2/ ├── public/ ├── src/ │   ├── app/ │   │   ├── page.tsx         # Main logic for summarisation │   │   └── layout.tsx       # App layout │   ├── components/ │   │   └── ui/              # ShadCN UI components (Input, Button) │   └── lib/ │       ├── db.ts            # MongoDB connection logic │       └── supabase.ts      # Supabase client setup ├── .env.local               # Environment variables (not pushed) ├── package.json ├── tailwind.config.ts ├── tsconfig.json └── README.md
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🌍 Environment Variables
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+These must be added in .env.local (and in *Vercel* settings when deploying):
+
+```env
+MONGODB_URI=your-mongodb-connection-string
+NEXT_PUBLIC_SUPABASE_URL=your-supabase-url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your-supabase-anon-key
+
+
+---
+
+🔗 Live Demo (Vercel)
+
+Click here to view the deployed site 🚀
+
